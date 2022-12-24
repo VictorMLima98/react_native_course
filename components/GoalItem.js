@@ -25,14 +25,14 @@ export default GoalItem;
 const styles = StyleSheet.create({
     goalItem: {
 		marginVertical: 4,
-		backgroundColor: '#eab676',
+		backgroundColor: '#e49a53',
 		borderRadius: 8,
         paddingVertical: 24,
 		paddingHorizontal: 12,
 	},
 
     pressedItem: {
-        opacity: 0.4,
+        opacity: 0.6
     },
 
 	goalText: {

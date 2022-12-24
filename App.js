@@ -70,7 +70,7 @@ export default function App() {
 					
 					elevation: 2,
 				}}>
-					Your goals for 2023
+					Metas para 2023
 				</Text>
 			</View>
 

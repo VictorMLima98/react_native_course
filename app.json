@@ -1,15 +1,15 @@
 {
 	"expo": {
-		"name": "RNCourse",
-		"slug": "RNCourse",
+		"name": "Goals23",
+		"slug": "goals-twenty-three",
 		"version": "1.0.0",
 		"orientation": "portrait",
-		"icon": "./assets/icon.png",
+		"icon": "./assets/images/goal.png",
 		"userInterfaceStyle": "light",
 		"splash": {
-			"image": "./assets/splash.png",
+			"image": "./assets/images/goal.png",
 			"resizeMode": "contain",
-			"backgroundColor": "#ffffff"
+			"backgroundColor": "#e49a53"
 		},
 		"updates": {
 			"fallbackToCacheTimeout": 0

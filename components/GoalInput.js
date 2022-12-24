@@ -3,10 +3,13 @@ import {
     StyleSheet,
     View,
     TextInput,
+    Text,
     Button,
     Modal,
     Image,
-    KeyboardAvoidingView
+    KeyboardAvoidingView,
+    TouchableWithoutFeedback,
+    Keyboard
 } from 'react-native';
 
 function GoalInput(props) {
@@ -24,43 +27,45 @@ function GoalInput(props) {
 
     return (
         <Modal visible={props.visible} animationType="fade" >
-            <KeyboardAvoidingView
-                behavior={Platform.OS === "ios" ? "padding" : "height"}
-                style={styles.modalContainer}
-            >
-                <Image 
-                    style={styles.image}
-                    source={require('../assets/images/goal.png')} 
-                />
+            <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+                <KeyboardAvoidingView
+                    behavior={Platform.OS === "ios" ? "padding" : "height"}
+                    style={styles.modalContainer}
+                >
+                    <Image 
+                        style={styles.image}
+                        source={require('../assets/images/goal.png')} 
+                    />
 
-                <TextInput
-                    style={styles.goalInput}
-                    placeholder="Add a Goal..."
-                    placeholderTextColor={'#f4d9b4'}
-                    onChangeText={goalInputHandler}
-                    value={newGoal} 
-                />
+                    <TextInput
+                        style={styles.goalInput}
+                        placeholder="O que você planeja realizar em 2023?"
+                        placeholderTextColor={'#f4d9b4'}
+                        onChangeText={goalInputHandler}
+                        value={newGoal}
+                        enablesReturnKeyAutomatically={true}
+                    />
 
-                {/* Style this later!! */}
-                <View style={styles.buttonsContainer}>
-                    <View style={{ 
-                        marginRight: 8
-                    }}>
-                        <Button 
-                            title="Cancel"
-                            onPress={props.onCancel}
-                        />
+                    {/* Style this later!! */}
+                    <View style={styles.buttonsContainer}>
+                        <View style={{ 
+                            marginRight: 8
+                        }}>
+                            <Button 
+                                title="Cancelar"
+                                onPress={props.onCancel}
+                            />
+                        </View>
+
+                        <View>
+                            <Button 
+                                title="Adicionar"
+                                onPress={addGoalHandler}
+                            />
+                        </View>
                     </View>
-
-                    <View>
-                        <Button 
-                            title="Add"
-                            onPress={addGoalHandler}
-                            
-                        />
-                    </View>
-                </View>
-            </KeyboardAvoidingView>
+                </KeyboardAvoidingView>
+            </TouchableWithoutFeedback>
         </Modal>
     );
 };
@@ -73,17 +78,17 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
         alignItems: 'center',
         padding: 16,
-        backgroundColor: '#6f361f'
+        backgroundColor: '#e49a53'
 	},
 
     goalInput: {
 		borderWidth: 1,
-		borderColor: '#faedda',
+		borderColor: '#fdf8ef',
 		borderRadius: 6,
 		padding: 8,
 		fontSize: 16,
         width: '100%',
-        color: '#faedda',
+        color: '#fdf8ef',
 	},
 
     buttonsContainer: {
