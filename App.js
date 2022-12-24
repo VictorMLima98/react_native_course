@@ -4,16 +4,17 @@ import { Pressable, StyleSheet, Button, Text, TextInput, View } from 'react-nati
 export default function App() {
 	return (
 		<View style={
-			styles.container
+			styles.appContainer
 		}>
 			<StatusBar style='auto' />
 
 			<View style={styles.inputContainer}>
 				<TextInput style={styles.textInput} placeholder="Add a Goal..." />
+
 				<Button title="Add" />
 			</View>
 
-			<View>
+			<View style={styles.listContainer}>
 				<Text>Your goals so far:</Text>
 			</View>
 		</View>
@@ -21,16 +22,20 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
-	container: {
-		paddingTop: 34,
-		paddingHorizontal: 8
+	appContainer: {
+		flex: 1,
+		paddingTop: 24,
+		paddingHorizontal: 16
 	},
 
 	inputContainer: {
+		flex: 1,
 		flexDirection: 'row',
-		justifyContent: "space-between",
+		justifyContent: 'space-between',
 		alignItems: 'center',
-		marginBottom: 8
+		marginBottom: 24,
+		borderBottomWidth: 1,
+		borderBottomColor: '#ccc'
 	},
 
 	textInput: {
@@ -40,5 +45,9 @@ const styles = StyleSheet.create({
 		borderRadius: 6,
 		marginRight: 8,
 		padding: 8
+	},
+
+	listContainer: {
+		flex: 8,
 	}
 });
