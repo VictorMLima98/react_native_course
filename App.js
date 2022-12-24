@@ -20,6 +20,10 @@ export default function App() {
 		toggleModal(true);
 	}
 
+	function endAddGoalHandler() {
+		toggleModal(false);
+	}
+
 	function addGoalHandler(newGoal) {
 		setGoals(currentGoals => [
 			...currentGoals,
@@ -28,6 +32,8 @@ export default function App() {
 				text: newGoal
 			}
 		]);
+
+		endAddGoalHandler();
 	};
 
 	function deleteGoalHandler(id) {
@@ -43,7 +49,11 @@ export default function App() {
 			<StatusBar
 				style='auto' />
 
-			<GoalInput visible={showModal} onAddGoal={addGoalHandler} />
+			<GoalInput 
+				visible={showModal}
+				onAddGoal={addGoalHandler}
+				onCancel={endAddGoalHandler}
+			/>
 
 			<View style={styles.goalsLabelContainer}>
 				<Text style={{
