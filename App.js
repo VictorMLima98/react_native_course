@@ -5,7 +5,8 @@ import {
 	Text,
 	View,
 	FlatList,
-	Button
+	Button,
+	Pressable
 } from 'react-native';
 
 import GoalItem from './components/GoalItem';
@@ -46,7 +47,8 @@ export default function App() {
 
 			<View style={styles.goalsLabelContainer}>
 				<Text style={{
-					fontSize: 24
+					fontSize: 24,
+					color: '#6f361f'
 				}}>
 					Your goals for 2023
 				</Text>
@@ -68,12 +70,17 @@ export default function App() {
 					alwaysBounceVertical={false} />
 			</View>
 
-			<View style={styles.addGoalButton}>
-				<Button 
-					title='Add New Goal'
-					color="#eab676"
-					onPress={startAddGoalHandler}
-				/>
+			<View style={styles.addGoalButtonParent}>
+				<Pressable
+						onPress={startAddGoalHandler}
+						style={({pressed}) => pressed && styles.pressedGoalButton}
+					>
+					<View style={styles.addGoalButton}>
+						<Text style={styles.goalButtonLabel}>
+							+
+						</Text>
+					</View>
+				</Pressable>
 			</View>
 		</View>
 	);
@@ -81,6 +88,7 @@ export default function App() {
 
 const styles = StyleSheet.create({
 	appContainer: {
+		backgroundColor: '#faedda',
 		flex: 1,
 		paddingTop: 32,
 		paddingHorizontal: 16
@@ -95,7 +103,28 @@ const styles = StyleSheet.create({
 		flex: 1,
 	},
 
+	addGoalButtonParent: {
+		position: 'absolute',
+		bottom: 16,
+		right: 16,
+	},
+
 	addGoalButton: {
-		marginBottom: 16
+		width: 80,
+		height: 80,
+		justifyContent: 'center',
+		alignItems: 'center',
+		padding: 4,
+		borderRadius: 100,
+		backgroundColor: '#894023',
+	},
+
+	goalButtonLabel: {
+		fontSize: 36,
+		color: '#fdf8ef',
+	},
+
+	pressedGoalButton: {
+		opacity: 0.4,
 	}
 });
