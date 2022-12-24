@@ -92,9 +92,9 @@ export default function App() {
 
 			<View style={styles.addGoalButtonParent}>
 				<Pressable
-						onPress={startAddGoalHandler}
-						style={({pressed}) => pressed && styles.pressedGoalButton}
-					>
+					onPress={startAddGoalHandler}
+					style={({pressed}) => pressed && styles.pressedGoalButton}
+				>
 					<View style={styles.addGoalButton}>
 						<Text style={styles.goalButtonLabel}>
 							+
@@ -130,8 +130,8 @@ const styles = StyleSheet.create({
 	},
 
 	addGoalButton: {
-		width: 80,
-		height: 80,
+		width: 75,
+		height: 75,
 		justifyContent: 'center',
 		alignItems: 'center',
 		padding: 4,
@@ -154,6 +154,6 @@ const styles = StyleSheet.create({
 	},
 
 	pressedGoalButton: {
-		opacity: 0.4,
+		opacity: 0.9,
 	}
 });
