@@ -4,14 +4,20 @@ import {
 	StyleSheet,
 	Text,
 	View,
-	FlatList
+	FlatList,
+	Button
 } from 'react-native';
 
 import GoalItem from './components/GoalItem';
 import GoalInput from './components/GoalInput';
 
 export default function App() {
+	const [showModal, toggleModal] = useState(false);
 	const [goals, setGoals] = useState([]);
+
+	function startAddGoalHandler() {
+		toggleModal(true);
+	}
 
 	function addGoalHandler(newGoal) {
 		setGoals(currentGoals => [
@@ -36,13 +42,13 @@ export default function App() {
 			<StatusBar
 				style='auto' />
 
-			<GoalInput onAddGoal={addGoalHandler} />
+			<GoalInput visible={showModal} onAddGoal={addGoalHandler} />
 
 			<View style={styles.goalsLabelContainer}>
 				<Text style={{
-					fontSize: 20
+					fontSize: 24
 				}}>
-					Your goals
+					Your goals for 2023
 				</Text>
 			</View>
 
@@ -60,6 +66,14 @@ export default function App() {
 					}}
 					keyboardDismissMode='on-drag'
 					alwaysBounceVertical={false} />
+			</View>
+
+			<View style={styles.addGoalButton}>
+				<Button 
+					title='Add New Goal'
+					color="#eab676"
+					onPress={startAddGoalHandler}
+				/>
 			</View>
 		</View>
 	);
@@ -80,4 +94,8 @@ const styles = StyleSheet.create({
 		marginBottom: 1,
 		flex: 1,
 	},
+
+	addGoalButton: {
+		marginBottom: 16
+	}
 });
