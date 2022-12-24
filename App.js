@@ -48,7 +48,17 @@ export default function App() {
 			<View style={styles.goalsLabelContainer}>
 				<Text style={{
 					fontSize: 24,
-					color: '#6f361f'
+					color: '#6f361f',
+					shadowColor: "#000",
+					shadowColor: "#000",
+					shadowOffset: {
+						width: 0,
+						height: 1,
+					},
+					shadowOpacity: 0.20,
+					shadowRadius: 1.41,
+					
+					elevation: 2,
 				}}>
 					Your goals for 2023
 				</Text>
@@ -117,6 +127,15 @@ const styles = StyleSheet.create({
 		padding: 4,
 		borderRadius: 100,
 		backgroundColor: '#894023',
+		shadowColor: "#000",
+		shadowOffset: {
+			width: 0,
+			height: 5,
+		},
+		shadowOpacity: 0.34,
+		shadowRadius: 6.27,
+
+		elevation: 10,
 	},
 
 	goalButtonLabel: {
