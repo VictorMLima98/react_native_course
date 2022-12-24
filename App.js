@@ -17,11 +17,17 @@ export default function App() {
 		setGoals(currentGoals => [
 			...currentGoals,
 			{
-				id: Math.random().toString(),
+				id: Date.now().toString(),
 				text: newGoal
 			}
 		]);
 	};
+
+	function deleteGoalHandler(id) {
+		setGoals(goals => {
+			return goals.filter((goal) => goal.id !== id);
+		});
+	}
 
 	return (
 		<View style={
@@ -47,7 +53,10 @@ export default function App() {
 						return item.id;
 					}}
 					renderItem={(goalsData) => {
-						return <GoalItem text={goalsData.item.text} />;
+						return <GoalItem 
+							id={goalsData.item.id}
+							text={goalsData.item.text}
+							onDeleteItem={deleteGoalHandler} />;
 					}}
 					keyboardDismissMode='on-drag'
 					alwaysBounceVertical={false} />
