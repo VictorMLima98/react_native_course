@@ -2,24 +2,18 @@ import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
 import {
 	StyleSheet,
-	Button,
 	Text,
-	TextInput,
 	View,
 	FlatList
 } from 'react-native';
 
 import GoalItem from './components/GoalItem';
+import GoalInput from './components/GoalInput';
 
 export default function App() {
-	const [newGoal, setNewGoal] = useState('');
 	const [goals, setGoals] = useState([]);
 
-	function goalInputHandler(text) {
-		setNewGoal(text);
-	};
-
-	function addGoalHandler() {
+	function addGoalHandler(newGoal) {
 		setGoals(currentGoals => [
 			...currentGoals,
 			{
@@ -36,14 +30,7 @@ export default function App() {
 			<StatusBar
 				style='auto' />
 
-			<View style={styles.inputContainer}>
-				<TextInput
-					style={styles.goalInput}
-					placeholder="Add a Goal..."
-					onChangeText={goalInputHandler} />
-
-				<Button title="Add" onPress={addGoalHandler} />
-			</View>
+			<GoalInput onAddGoal={addGoalHandler} />
 
 			<View style={styles.goalsLabelContainer}>
 				<Text style={{
@@ -76,25 +63,8 @@ const styles = StyleSheet.create({
 		paddingHorizontal: 16
 	},
 
-	inputContainer: {
-		flexDirection: 'row',
-		justifyContent: 'space-between',
-		alignItems: 'center',
-		marginBottom: 16,
-	},
-
 	goalsLabelContainer: {
 		marginBottom: 16,
-	},
-
-	goalInput: {
-		flex: 1,
-		borderWidth: 1,
-		borderColor: '#ccc',
-		borderRadius: 6,
-		marginRight: 8,
-		padding: 8,
-		fontSize: 16,
 	},
 
 	goalsContainer: {
