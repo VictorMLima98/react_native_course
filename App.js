@@ -32,12 +32,23 @@ export default function App() {
 				<Button title="Add" onPress={addGoalHandler} />
 			</View>
 
-			<View style={styles.goalsContainer}>
+			<View style={styles.goalsLabelContainer}>
 				<Text style={{
-					fontSize: 20,
-					marginBottom: 8
-				}}>Your goals so far:</Text>
-				{goals.map((goal, index) => <Text style={styles.goalItem} key={index}>{goal}</Text>)}
+					fontSize: 20
+				}}>
+					Your goals
+				</Text>
+			</View>
+
+			<View style={styles.goalsContainer}>
+
+				{goals.map((goal, index) => (
+					<View key={index} style={styles.goalItem}>
+						<Text style={styles.goalText}>
+							{goal}
+						</Text>
+					</View>
+				))}
 			</View>
 		</View>
 	);
@@ -46,15 +57,19 @@ export default function App() {
 const styles = StyleSheet.create({
 	appContainer: {
 		flex: 1,
-		paddingTop: 24,
+		paddingTop: 32,
 		paddingHorizontal: 16
 	},
 
 	inputContainer: {
-		flex: 1,
 		flexDirection: 'row',
 		justifyContent: 'space-between',
 		alignItems: 'center',
+		marginBottom: 16,
+	},
+
+	goalsLabelContainer: {
+		marginBottom: 16,
 	},
 
 	goalInput: {
@@ -68,13 +83,18 @@ const styles = StyleSheet.create({
 	},
 
 	goalsContainer: {
-		flex: 10,
+		marginBottom: 1,
 	},
 
 	goalItem: {
 		paddingVertical: 24,
-		marginVertical: 3,
-		backgroundColor: '#eee',
-		fontSize: 16
+		paddingHorizontal: 12,
+		marginVertical: 4,
+		backgroundColor: '#eab676',
+		borderRadius: 8,
+	},
+
+	goalText: {
+		fontSize: 20
 	}
 });
